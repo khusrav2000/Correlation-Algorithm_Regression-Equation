@@ -1,0 +1,6 @@
+﻿  MyForm.cpp
+C:\Users\KHUSRAV\source\repos\CLREmpty\CLREmpty\MyForm.h(317,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\KHUSRAV\source\repos\CLREmpty\CLREmpty\MyForm.h(319,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\KHUSRAV\source\repos\CLREmpty\CLREmpty\MyForm.h(371,39): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  CLREmpty.vcxproj -> C:\Users\KHUSRAV\source\repos\CLREmpty\Debug\CLREmpty.exe

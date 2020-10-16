@@ -1,0 +1,3 @@
+C:\Users\KHUSRAV\source\repos\CLREmpty\CLREmpty\Debug\CLREmpty.vcxprojAssemblyReference.cache
+C:\Users\KHUSRAV\source\repos\CLREmpty\CLREmpty\Debug\CLREmpty.MyForm.resources
+C:\Users\KHUSRAV\source\repos\CLREmpty\CLREmpty\Debug\CLREmpty.vcxproj.GenerateResource.cache
