@@ -52,6 +52,10 @@ namespace CLREmpty {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Label^ label12;
 
 
 
@@ -89,6 +93,10 @@ namespace CLREmpty {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -257,11 +265,63 @@ namespace CLREmpty {
 			this->dataGridView1->TabIndex = 16;
 			this->dataGridView1->Visible = false;
 			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(440, 51);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(35, 20);
+			this->label9->TabIndex = 17;
+			this->label9->Text = L"yx=";
+			this->label9->Visible = false;
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label10->Location = System::Drawing::Point(702, 52);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(35, 20);
+			this->label10->TabIndex = 18;
+			this->label10->Text = L"xy=";
+			this->label10->Visible = false;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label11->Location = System::Drawing::Point(471, 50);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(60, 20);
+			this->label11->TabIndex = 19;
+			this->label11->Text = L"label11";
+			this->label11->Visible = false;
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(732, 51);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(60, 20);
+			this->label12->TabIndex = 20;
+			this->label12->Text = L"label12";
+			this->label12->Visible = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1027, 525);
+			this->Controls->Add(this->label12);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->label10);
+			this->Controls->Add(this->label9);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->button1);
@@ -300,7 +360,7 @@ namespace CLREmpty {
 			s2 = Int32::Parse(textBox5->Text);
 			u = Int32::Parse(textBox6->Text);
 			gamma = Int32::Parse(textBox7->Text);
-			label8->Text = "v1=" + textBox1->Text + " t1=" + textBox2->Text + " t2=" + textBox3->Text + " s1=" + textBox4->Text + " s2=" + textBox5->Text + " u=" + textBox6->Text + " gamma=" + textBox7->Text;
+			// label8->Text = " v1=" + textBox1->Text + " t1=" + textBox2->Text + " t2=" + textBox3->Text + " s1=" + textBox4->Text + " s2=" + textBox5->Text + " u=" + textBox6->Text + " gamma=" + textBox7->Text;
 			label8->ForeColor = System::Drawing::Color::Green;
 			
 		}
@@ -312,11 +372,12 @@ namespace CLREmpty {
 		}
 		generate_Table();
 	}
+		   
 	private: System::Void generate_Table() {
 		// int m = (V % 7) + t1;
-		int m = System::Math::Sqrt(V) + t1;
+		int m = System::Math::Sqrt(V) + t1 % 5;
 		// int k = (V % 5) + t2;
-		int k = System::Math::Sqrt(V) + t2;
+		int k = System::Math::Sqrt(V) + t2 % 3;
 		// int hx = (V + 15) % 7 + s1;
 		int hx = (V + s1) % 7 + 1;
 		// int hy = (V + 15) % 9 + s2;
@@ -342,15 +403,15 @@ namespace CLREmpty {
 		dataGridView1->Rows[0]->Cells[0]->Value = "Y / X";
 		
 		for (int j = 1; j <= m; j ++) {
-			dataGridView1->Rows[0]->Cells[j]->Value = System::Convert::ToString(X);
-			n[0][j] = X;
 			X += hx;
+			n[0][j] = X;
+			dataGridView1->Rows[0]->Cells[j]->Value = System::Convert::ToString(X);
 			nx[j] = 0;
 		}
 		for (int i = 1; i <= k; i ++) {
-			dataGridView1->Rows[i]->Cells[0]->Value = System::Convert::ToString(Y);
-			n[i][0] = Y;
 			Y += hy;
+			n[i][0] = Y;
+			dataGridView1->Rows[i]->Cells[0]->Value = System::Convert::ToString(Y);
 			ny[i] = 0;
 		}
 		for (int i = 1; i <= k; i++) {
@@ -389,7 +450,66 @@ namespace CLREmpty {
 		for (int i = 1; i <= k; i++) {
 			dataGridView1->Rows[i]->Cells[m + 1]->Value = System::Convert::ToString(ny[i]);
 		}
+		
 
+		// REG EQUATION
+		double x_ = 0.0, y_ = 0.0, x2_ = 0.0, y2_ = 0.0, ax = 0.0, ay = 0.0, ru = 0.0, nxysum = 0.0;
+		for (int i = 1; i <= k; i++) {
+			x_ += ny[i] * n[i][0];
+		}
+		x_ = x_ / nsum;
+		for (int j = 1; j <= m; j++) {
+			y_ += nx[j] * n[0][j];
+		}
+		y_ = y_ / nsum;
+		for (int i = 1; i <= k; i++) {
+			x2_ += ny[i] * n[i][0] * n[i][0];
+		}
+		x2_ = x2_ / nsum;
+		for (int j = 1; j <= m; j++) {
+			y2_ += nx[j] * n[0][j] * n[0][j];
+		}
+		y2_ = y2_ / nsum;
+		ax = System::Math::Sqrt(x2_ - x_ * x_);
+		ay = System::Math::Sqrt(y2_ - y_ * y_);
+		for (int i = 1; i <= k; i++) {
+			for (int j = 1; j <= m; j++) {
+				nxysum += n[i][j] * n[0][j] * n[i][0];
+			}
+		}
+		ru = (nxysum - nsum * x_ * y_) / (nsum * ax * ay);
+
+		// yx;
+		double h = (ay * ru) / ax;
+		// label8->Text += " h = " + System::Convert::ToString(h);
+		// label8->Text += "\n" + " ru = " + System::Convert::ToString(ru) + " x_ = " + System::Convert::ToString(x_) + " y_ = " + System::Convert::ToString(y_) + " ax = " + System::Convert::ToString(ax) + " ay = " + System::Convert::ToString(ay);
+		// label8->Text += " x2_= " + System::Convert::ToString(x2_);
+		// label8->Text += " y2_= " + System::Convert::ToString(y2_);
+		// label8->Text += " nxysum = " + System::Convert::ToString(nxysum);
+		double v = h * (-x_) + y_;
+		label11->Text = System::Convert::ToString(System::Math::Floor(v * 1000000.0) / 1000000.0);
+		if (h < 0.0) {
+			label11->Text += System::Convert::ToString(System::Math::Floor(h * 1000000.0) / 1000000.0) + "x";
+		}
+		else {
+			label11->Text += "+"+System::Convert::ToString(System::Math::Floor(h * 1000000.0) / 1000000.0) + "x";
+		}
+
+		// xy
+		h = (ax * ru) / ay;
+		v = h * (-y_) + x_;
+		label12->Text = System::Convert::ToString(System::Math::Floor(v * 1000000.0) / 1000000.0);
+		if (h < 0.0) {
+			label12->Text += System::Convert::ToString(System::Math::Floor(h * 1000000.0) / 1000000.0) + "y";
+		}
+		else {
+			label12->Text += "+"+System::Convert::ToString(System::Math::Floor(h * 1000000.0) / 1000000.0) + "y";
+		}
+		label11->Visible = true;
+		label12->Visible = true;
+		label10->Visible = true;
+		label9->Visible = true;
 	}
+
 };
 }
